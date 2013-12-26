@@ -180,21 +180,32 @@ public class DAO {
 			
 			if (idValue.equals(String.valueOf(studentObjectArray.get(indexI).getId()))) {
 				resultArray.add(studentObjectArray.get(indexI));
-				System.out.println("Subject : " + studentObjectArray.get(indexI).getSubject() + " Score : " + studentObjectArray.get(indexI).getScore());
 			}
 		}
-		Collections.sort(resultArray,Comparator<Integer>);
+		
+		Collections.sort(resultArray,new scoreComparator());
+		
+		for(STUDENT e : resultArray){
+			System.out.println("Subject : " + e.getSubject() + " Score : " + e.getScore());
+		}
 		
 	}
 
 	// subject : 를 수강한 모든 학번과 점수을 출력합니다."
 	public void searchSubject(String subjectValue) {
+		List<STUDENT> resultArray=new ArrayList<STUDENT>();
 		
 		for (int indexI = 0; indexI < studentObjectArray.size(); indexI++) {
 			
 			if (subjectValue.equals(studentObjectArray.get(indexI).getSubject())) {
-				System.out.println("Id : " + studentObjectArray.get(indexI).getId() + "  Score : " + studentObjectArray.get(indexI).getScore());
+				resultArray.add(studentObjectArray.get(indexI));
 			}
+		}
+		
+		Collections.sort(resultArray,new scoreComparator());
+		
+		for(STUDENT e : resultArray){
+			System.out.println("Id : " + e.getId() + " Score : " + e.getScore());
 		}
 	}
 }
