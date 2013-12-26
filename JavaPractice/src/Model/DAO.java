@@ -29,11 +29,13 @@ public class DAO {
 
 			NodeList studentList = doc.getElementsByTagName("student");
 
-			for (int i = 0; i < studentList.getLength(); i++) {
-				NodeList sList = studentList.item(i).getChildNodes();
+			for (int tableTagIndex = 0; tableTagIndex < studentList.getLength(); tableTagIndex++) {
+				
+				NodeList studentElementIndex = studentList.item(tableTagIndex).getChildNodes();
 				STUDENT person = new STUDENT();
-				for (int j = 0; j < sList.getLength(); j++) {
-					Node cNode = sList.item(j);
+				
+				for (int studentTagIndex = 0; studentTagIndex < studentElementIndex.getLength(); studentTagIndex++) {
+					Node cNode = studentElementIndex.item(studentTagIndex);
 					if (cNode.getNodeName().equalsIgnoreCase("id")) {
 						person.setId(Integer.parseInt(cNode.getTextContent()));
 						System.out.print(cNode.getTextContent() + " ");
@@ -47,6 +49,7 @@ public class DAO {
 						System.out.print(cNode.getTextContent() + " ");
 					}
 				}
+				
 				studentObjectArray.add(person);
 				System.out.println();
 			}
@@ -62,8 +65,11 @@ public class DAO {
 	public void pMax(String idValue) {
 		STUDENT pmaxSTUDENT = new STUDENT();
 		int maxScore = 0;
+		
 		for (int indexI = 0; indexI < studentObjectArray.size(); indexI++) {
+			
 			if (idValue.equals(String.valueOf(studentObjectArray.get(indexI).getId()))) {
+				
 				if (studentObjectArray.get(indexI).getScore() >= maxScore) {
 					maxScore = studentObjectArray.get(indexI).getScore();
 					pmaxSTUDENT = studentObjectArray.get(indexI);
@@ -76,10 +82,12 @@ public class DAO {
 	// id : 학번을 가진 학생의 최하위 성적의 과목과 점수를 출력합니다."
 	public void pMin(String idValue) {
 		STUDENT pminSTUDENT = new STUDENT();
-
 		int minScore = -1;
+		
 		for (int indexI = 0; indexI < studentObjectArray.size(); indexI++) {
+			
 			if (idValue.equals(String.valueOf(studentObjectArray.get(indexI).getId()))) {
+				
 				if (minScore == -1) {
 					minScore = studentObjectArray.get(indexI).getScore();
 					pminSTUDENT = studentObjectArray.get(indexI);
@@ -96,7 +104,9 @@ public class DAO {
 	public void pAvg(String idValue) {
 		int sumScore = 0;
 		int count = 0;
+		
 		for (int indexI = 0; indexI < studentObjectArray.size(); indexI++) {
+			
 			if (idValue.equals(String.valueOf(studentObjectArray.get(indexI).getId()))) {
 				sumScore += studentObjectArray.get(indexI).getScore();
 				count++;
@@ -109,8 +119,11 @@ public class DAO {
 	public void sMax(String subjectValue) {
 		STUDENT smaxSTUDENT = new STUDENT();
 		int maxScore = 0;
+		
 		for (int indexI = 0; indexI < studentObjectArray.size(); indexI++) {
+			
 			if (subjectValue.equals(studentObjectArray.get(indexI).getSubject())) {
+				
 				if (studentObjectArray.get(indexI).getScore() >= maxScore) {
 					maxScore = studentObjectArray.get(indexI).getScore();
 					smaxSTUDENT = studentObjectArray.get(indexI);
@@ -123,17 +136,21 @@ public class DAO {
 	// subject : 과목을 수강한 학생 중 최하위 성적의 학번과 점수를 출력합니다."
 	public void sMin(String subjectValue) {
 		STUDENT sminSTUDENT = new STUDENT();
-
 		int minScore = -1;
+		
 		for (int indexI = 0; indexI < studentObjectArray.size(); indexI++) {
+			
 			if (subjectValue.equals(studentObjectArray.get(indexI).getSubject())) {
+				
 				if (minScore == -1) {
 					minScore = studentObjectArray.get(indexI).getScore();
 					sminSTUDENT = studentObjectArray.get(indexI);
+				
 				} else if (studentObjectArray.get(indexI).getScore() <= minScore) {
 					minScore = studentObjectArray.get(indexI).getScore();
 					sminSTUDENT = studentObjectArray.get(indexI);
 				}
+				
 			}
 		}
 		System.out.println("Id : " + sminSTUDENT.getId() + "  Score : " + sminSTUDENT.getScore());
@@ -143,7 +160,9 @@ public class DAO {
 	public void sAvg(String subjectValue) {
 		int sumScore = 0;
 		int count = 0;
+		
 		for (int indexI = 0; indexI < studentObjectArray.size(); indexI++) {
+			
 			if (subjectValue.equals(studentObjectArray.get(indexI).getSubject())) {
 				sumScore += studentObjectArray.get(indexI).getScore();
 				count++;
@@ -154,7 +173,9 @@ public class DAO {
 
 	// id : 님이 수강한 모든 과목과 점수을 출력합니다."
 	public void searchPerson(String idValue) {
+		
 		for (int indexI = 0; indexI < studentObjectArray.size(); indexI++) {
+			
 			if (idValue.equals(String.valueOf(studentObjectArray.get(indexI).getId()))) {
 				System.out.println("Subject : " + studentObjectArray.get(indexI).getSubject() + " Score : " + studentObjectArray.get(indexI).getScore());
 			}
@@ -163,7 +184,9 @@ public class DAO {
 
 	// subject : 를 수강한 모든 학번과 점수을 출력합니다."
 	public void searchSubject(String subjectValue) {
+		
 		for (int indexI = 0; indexI < studentObjectArray.size(); indexI++) {
+			
 			if (subjectValue.equals(studentObjectArray.get(indexI).getSubject())) {
 				System.out.println("Id : " + studentObjectArray.get(indexI).getId() + "  Score : " + studentObjectArray.get(indexI).getScore());
 			}
