@@ -1,7 +1,9 @@
 package Controller;
 
 import java.lang.reflect.Method;
-/*
+
+/* UIT 개발실 신입사원 박지만
+ * 
  * Command LIST
  * ?> [-Operater] [-Parameter]
  * 
@@ -30,6 +32,7 @@ import java.lang.reflect.Method;
  * SUBJECT {과목} ? Programming, English, History
  * 
  */
+
 public class Main {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })

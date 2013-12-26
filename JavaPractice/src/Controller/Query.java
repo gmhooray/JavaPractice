@@ -1,12 +1,11 @@
 package Controller;
 
-
 import java.util.Scanner;
 
 import Model.DAO;
 
 public class Query implements Command {
-	
+
 	@SuppressWarnings("resource")
 	@Override
 	public void execute(String Command) {
@@ -14,7 +13,7 @@ public class Query implements Command {
 		String commandOperator = getCommandOperator(cmdArray);
 		String commandParameter = getCommandParameter(cmdArray);
 		DAO dao = readXML(commandOperator, commandParameter);
-		
+
 		while (true) {
 			System.out.print("?> ");
 			Command = new Scanner(System.in).nextLine();
@@ -24,7 +23,7 @@ public class Query implements Command {
 				commandParameter = getCommandParameter(cmdArray);
 				switch (commandOperator) {
 				case "LOAD":
-					dao=readXML(commandOperator, commandParameter);
+					dao = readXML(commandOperator, commandParameter);
 					break;
 				case "PERSON":
 					dao.searchPerson(commandParameter);
@@ -74,7 +73,7 @@ public class Query implements Command {
 	}
 
 	private DAO readXML(String commandOperator, String commandParameter) {
-		DAO dao=new DAO(commandParameter);
+		DAO dao = new DAO(commandParameter);
 		dao.readXML();
 		return dao;
 	}
