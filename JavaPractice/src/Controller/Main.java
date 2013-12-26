@@ -2,7 +2,7 @@ package Controller;
 
 import java.lang.reflect.Method;
 
-/* UIT Park Ji Man
+/* Park Ji Man. UIT °³¹ß½Ç
  * 
  * Command LIST
  * 
