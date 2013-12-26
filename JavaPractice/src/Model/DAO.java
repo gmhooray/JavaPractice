@@ -52,7 +52,7 @@ public class DAO {
 			}
 			System.out.println("Success LOAD " + params);
 		} catch (FileNotFoundException e) {
-			System.out.println("지정된 파일을 찾을 수 없습니다.");
+			System.out.println("Could not find XML file : " + params);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -60,7 +60,6 @@ public class DAO {
 
 	// id : 학번을 가진 학생의 최상위 성적의 과목과 점수를 출력합니다."
 	public void pMax(String idValue) {
-		System.out.println(" " + idValue + " 학번을 가진 학생의 최상위 성적의 과목과 점수를 출력합니다.");
 		STUDENT pmaxSTUDENT = new STUDENT();
 		int maxScore = 0;
 		for (int indexI = 0; indexI < studentObjectArray.size(); indexI++) {
@@ -71,12 +70,11 @@ public class DAO {
 				}
 			}
 		}
-		System.out.println(pmaxSTUDENT.getSubject() + " " + pmaxSTUDENT.getScore());
+		System.out.println("Subject : " + pmaxSTUDENT.getSubject() + "  Score : " + pmaxSTUDENT.getScore());
 	}
 
 	// id : 학번을 가진 학생의 최하위 성적의 과목과 점수를 출력합니다."
 	public void pMin(String idValue) {
-		System.out.println(" " + idValue + " 학번을 가진 학생의 최하위 성적의 과목과 점수를 출력합니다.");
 		STUDENT pminSTUDENT = new STUDENT();
 
 		int minScore = -1;
@@ -91,12 +89,11 @@ public class DAO {
 				}
 			}
 		}
-		System.out.println(pminSTUDENT.getSubject() + " " + pminSTUDENT.getScore());
+		System.out.println("Subject : " + pminSTUDENT.getSubject() + "  Score : " + pminSTUDENT.getScore());
 	}
 
 	// id : 학번을 가진 학생의 전 과목의 평균 점수를 출력합니다."
 	public void pAvg(String idValue) {
-		System.out.println(" " + idValue + " 학번을 가진 학생의 전 과목의 평균 점수를 출력합니다.");
 		int sumScore = 0;
 		int count = 0;
 		for (int indexI = 0; indexI < studentObjectArray.size(); indexI++) {
@@ -105,12 +102,11 @@ public class DAO {
 				count++;
 			}
 		}
-		System.out.println(idValue + " " + String.valueOf(sumScore / count));
+		System.out.println("Id : " + idValue + "  Average : " + String.valueOf(sumScore / count));
 	}
 
 	// subject : 과목을 수강한 학생 중 최상위 성적의 학번과 점수를 출력합니다."
 	public void sMax(String subjectValue) {
-		System.out.println(" " + subjectValue + " 과목을 수강한 학생 중 최상위 성적의 학번과 점수를 출력합니다.");
 		STUDENT smaxSTUDENT = new STUDENT();
 		int maxScore = 0;
 		for (int indexI = 0; indexI < studentObjectArray.size(); indexI++) {
@@ -121,12 +117,11 @@ public class DAO {
 				}
 			}
 		}
-		System.out.println(smaxSTUDENT.getId() + " " + smaxSTUDENT.getScore());
+		System.out.println("Id : " + smaxSTUDENT.getId() + "  Score : " + smaxSTUDENT.getScore());
 	}
 
 	// subject : 과목을 수강한 학생 중 최하위 성적의 학번과 점수를 출력합니다."
 	public void sMin(String subjectValue) {
-		System.out.println(" " + subjectValue + " 과목을 수강한 학생 중 최하위 성적의 학번과 점수를 출력합니다.");
 		STUDENT sminSTUDENT = new STUDENT();
 
 		int minScore = -1;
@@ -141,12 +136,11 @@ public class DAO {
 				}
 			}
 		}
-		System.out.println(sminSTUDENT.getId() + " " + sminSTUDENT.getScore());
+		System.out.println("Id : " + sminSTUDENT.getId() + "  Score : " + sminSTUDENT.getScore());
 	}
 
 	// subject : 과목을 수강한 모든 학생의 평균 점수를 출력합니다."
 	public void sAvg(String subjectValue) {
-		System.out.println(" " + subjectValue + " 과목을 수강한 모든 학생의 평균 점수를 출력합니다.");
 		int sumScore = 0;
 		int count = 0;
 		for (int indexI = 0; indexI < studentObjectArray.size(); indexI++) {
@@ -155,25 +149,23 @@ public class DAO {
 				count++;
 			}
 		}
-		System.out.println(subjectValue + " " + String.valueOf(sumScore / count) + " 점");
+		System.out.println("Subject : " + subjectValue + "  Average : " + String.valueOf(sumScore / count));
 	}
 
 	// id : 님이 수강한 모든 과목과 점수을 출력합니다."
 	public void searchPerson(String idValue) {
-		System.out.println(" " + idValue + " 님이 수강한 모든 과목과 점수을 출력합니다.");
 		for (int indexI = 0; indexI < studentObjectArray.size(); indexI++) {
 			if (idValue.equals(String.valueOf(studentObjectArray.get(indexI).getId()))) {
-				System.out.println(studentObjectArray.get(indexI).getSubject() + " " + studentObjectArray.get(indexI).getScore());
+				System.out.println("Subject : " + studentObjectArray.get(indexI).getSubject() + " Score : " + studentObjectArray.get(indexI).getScore());
 			}
 		}
 	}
 
 	// subject : 를 수강한 모든 학번과 점수을 출력합니다."
 	public void searchSubject(String subjectValue) {
-		System.out.println(" " + subjectValue + " 를 수강한 모든 학번과 점수을 출력합니다.");
 		for (int indexI = 0; indexI < studentObjectArray.size(); indexI++) {
 			if (subjectValue.equals(studentObjectArray.get(indexI).getSubject())) {
-				System.out.println(studentObjectArray.get(indexI).getId() + " " + studentObjectArray.get(indexI).getScore());
+				System.out.println("Id : " + studentObjectArray.get(indexI).getId() + "  Score : " + studentObjectArray.get(indexI).getScore());
 			}
 		}
 	}

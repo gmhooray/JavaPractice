@@ -13,7 +13,6 @@ public class Query implements Command {
 		String commandOperator = getCommandOperator(cmdArray);
 		String commandParameter = getCommandParameter(cmdArray);
 		DAO dao = readXML(commandOperator, commandParameter);
-
 		while (true) {
 			System.out.print("?> ");
 			Command = new Scanner(System.in).nextLine();
@@ -53,11 +52,11 @@ public class Query implements Command {
 					System.out.println("Bye! Bye!");
 					return;
 				default:
-					System.out.println("잘못된 명령어입니다.");
+					System.out.println("\""+Command+"\" "+"is not recognized as an internal or external command");
 					break;
 				}
 			} else {
-				System.out.println("잘못된 명령어입니다.");
+				System.out.println("\""+Command+"\" "+"is not recognized as an internal or external command");
 			}
 		}
 	}
