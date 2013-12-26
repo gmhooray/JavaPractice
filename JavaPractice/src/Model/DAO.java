@@ -2,6 +2,7 @@ package Model;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -173,13 +174,17 @@ public class DAO {
 
 	// id : 님이 수강한 모든 과목과 점수을 출력합니다."
 	public void searchPerson(String idValue) {
+		List<STUDENT> resultArray=new ArrayList<STUDENT>();
 		
 		for (int indexI = 0; indexI < studentObjectArray.size(); indexI++) {
 			
 			if (idValue.equals(String.valueOf(studentObjectArray.get(indexI).getId()))) {
+				resultArray.add(studentObjectArray.get(indexI));
 				System.out.println("Subject : " + studentObjectArray.get(indexI).getSubject() + " Score : " + studentObjectArray.get(indexI).getScore());
 			}
 		}
+		Collections.sort(resultArray,Comparator<Integer>);
+		
 	}
 
 	// subject : 를 수강한 모든 학번과 점수을 출력합니다."
