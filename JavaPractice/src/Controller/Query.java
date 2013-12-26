@@ -50,7 +50,7 @@ public class Query implements Command {
 				case "SAVG":
 					dao.sAvg(commandParameter);
 					break;
-				case "EXIT":
+				case "END":
 					System.out.println("Bye! Bye!");
 					return;
 				default:
