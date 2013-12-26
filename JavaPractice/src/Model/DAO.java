@@ -183,7 +183,7 @@ public class DAO {
 			}
 		}
 		
-		Collections.sort(resultArray,new scoreComparator());
+		Collections.sort(resultArray,new ScoreComparator());
 		
 		for(STUDENT e : resultArray){
 			System.out.println("Subject : " + e.getSubject() + " Score : " + e.getScore());
@@ -202,7 +202,7 @@ public class DAO {
 			}
 		}
 		
-		Collections.sort(resultArray,new scoreComparator());
+		Collections.sort(resultArray,new ScoreComparator());
 		
 		for(STUDENT e : resultArray){
 			System.out.println("Id : " + e.getId() + " Score : " + e.getScore());
