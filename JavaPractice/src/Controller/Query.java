@@ -1,5 +1,9 @@
+package Controller;
+
 
 import java.util.Scanner;
+
+import Model.DAO;
 
 public class Query implements Command {
 	
@@ -47,7 +51,7 @@ public class Query implements Command {
 					dao.sAvg(commandParameter);
 					break;
 				case "EXIT":
-					System.out.println("exit Program");
+					System.out.println("Bye! Bye!");
 					return;
 				default:
 					System.out.println("잘못된 명령어입니다.");
@@ -72,7 +76,6 @@ public class Query implements Command {
 	private DAO readXML(String commandOperator, String commandParameter) {
 		DAO dao=new DAO(commandParameter);
 		dao.readXML();
-
 		return dao;
 	}
 }
